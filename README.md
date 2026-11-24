@@ -24,7 +24,7 @@ computer.
 | Size | 2.5 MB, 0.62M parameters | 8.1 MB, 2.03M parameters |
 | Neural Engine (M1 Pro) | 188 ms per input megapixel | 485 ms per input megapixel |
 | Good for | everyday photos, batches | soft camera photos, single images |
-| In LocalSR | the Quick preset | the Best Quality preset |
+| In LocalSR (0.6.0) | the Quick preset | in the model library |
 
 The names give the scale (4x), the purpose (photos), the network (PULSE), and its size (channels x blocks). Every
 operation of the Core ML export runs on the Neural Engine. Two experimental video variants of Photo S are in the same
@@ -39,7 +39,7 @@ Seconds per input megapixel, lower is better:
 | **Photo S** | 9.1 | 15.0 | 22.3 |
 | SPAN NomosUni (LocalSR's Quick until now) | 10.1 | 15.5 | 22.1 |
 | **Photo M** | 25.1 | 48.5 | 58.9 |
-| NomosWebPhoto RealPLKSR (LocalSR's Best Quality until now) | 200.8 | 340.9 | 317.1 |
+| NomosWebPhoto RealPLKSR (LocalSR's Best Quality preset) | 200.8 | 340.9 | 317.1 |
 | Real-ESRGAN x4plus | 272.1 | 462.5 | 554.0 |
 
 - **Photo S** is faster than SPAN on the laptop and just as fast on the Mac mini.
