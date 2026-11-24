@@ -3,7 +3,8 @@
 **Small 4x photo upscalers that run entirely on Apple's Neural Engine, trained only on CC0 photos.**
 
 By Hermes Reisner · **[Technical report (PDF)](report/localsr-models.pdf)** ·
-[Download (release v1)](https://github.com/HerRei/localsr-models/releases/tag/v1) · Weights CC BY 4.0, code MIT
+[Download (release v1)](https://github.com/HerRei/localsr-models/releases/tag/v1) ·
+[Hugging Face](https://huggingface.co/HerRei/localsr-models) · Weights CC BY 4.0, code MIT
 
 I made these models for [LocalSR](https://github.com/HerRei/local-upscale), my free app that upscales photos and
 videos on your own machine. They run on the NPU, so you can upscale in the background while you keep using your
