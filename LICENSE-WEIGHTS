@@ -1,0 +1,13 @@
+The model weights in this project (the *.safetensors files of the releases) are licensed under the
+Creative Commons Attribution 4.0 International licence (CC BY 4.0):
+https://creativecommons.org/licenses/by/4.0/
+Full legal code: https://creativecommons.org/licenses/by/4.0/legalcode
+
+Copyright (c) 2026 Hermes Reisner
+
+When you use or share the weights, or anything derived from them, give credit, for example:
+
+    LocalSR models by Hermes Reisner (https://github.com/HerRei/localsr-models), CC BY 4.0
+
+and say whether you changed them. The code in this repository (pulse_arch.py, upscale.py) is under the MIT licence
+in LICENSE.
