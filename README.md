@@ -30,6 +30,9 @@ The names give the scale (4x), the purpose (photos), the network (PULSE), and it
 operation of the Core ML export runs on the Neural Engine. Two experimental video variants of Photo S are in the same
 release.
 
+Each model also comes as ONNX, in fp32 and fp16 (`_fp16`), for chaiNNer, ONNX Runtime and DirectML. The fp32 files
+match PyTorch to within 3e-6, and the fp16 files reach at least 75 dB PSNR against it.
+
 ## Fast on older computers
 
 Seconds per input megapixel, lower is better:
@@ -104,6 +107,21 @@ Photo S. So for video I recommend plain Photo S.
 pip install torch safetensors pillow
 python upscale.py 4xLocalSRPhoto_PULSE-64x8.safetensors photo.jpg photo_x4.png
 ```
+
+Or with ONNX Runtime alone, no PyTorch needed:
+
+```python
+import numpy as np, onnxruntime as ort
+from PIL import Image
+
+sess = ort.InferenceSession("4xLocalSRPhoto_PULSE-64x8.onnx")
+x = np.asarray(Image.open("photo.jpg").convert("RGB"), np.float32).transpose(2, 0, 1)[None] / 255
+y = sess.run(None, {"input": x})[0][0].clip(0, 1).transpose(1, 2, 0)
+Image.fromarray((y * 255 + .5).astype(np.uint8)).save("photo_x4.png")
+```
+
+The ONNX input is 1x3xHxW RGB in [0, 1] at any size, and the output is not clamped. For large images, tile with a
+32 px overlap as `upscale.py` does. `export_onnx.py` rebuilds the ONNX files from the `.safetensors` and checks them.
 
 `pulse_arch.py` is the network (plain PyTorch, about 80 lines) and `upscale.py` a small command line around it. Large
 images are processed in tiles whose overlap is wider than the network's receptive field, so tiling never changes the
